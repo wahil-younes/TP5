@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<script>
+    for (let A = 1; A <= 9; A++){
+    for (let B = 1; B <= 9; B++){
+    for (let C = 1; C <= 9; C++){
+        let ABC = A * 100 + B * 10 + C;
+        let sommeCube = Math.pow(A, 3) + Math.pow(B, 3) + Math.pow(C, 3);
+    if (ABC === sommeCube){
+        console.log(`: A=${A}, B=${B}, C=${C}, ABC=${ABC}`);}}}}
+
+
+
+
+    function Monnaie(montant){
+        const billets = [200, 100, 50, 20, 10, 5];
+        const pieces = [2, 1];
+        let Monnaierendu = {};
+        billets.forEach(function(billet){
+        if (montant >= billet){
+        let nbBillets = Math.floor(montant / billet);
+            Monnaierendu[billet] = nbBillets;
+            montant = montant % billet;} 
+        else{
+            Monnaierendu[billet] = 0;}});
+        pieces.forEach(function(piece){
+        if (montant >= piece){
+            let nbPieces = Math.floor(montant / piece);
+            Monnaierendu[piece] = nbPieces;
+            montant = montant % piece;} 
+            else{
+                Monnaierendu[piece] = 0;}});
+        console.log("monnaie:");
+        for (let valeur in Monnaierendu){
+            console.log(`${Monnaierendu[valeur]} x ${valeur}€`);}}
+
+
+
+
+
+    function verification(Carte){
+    let carteString = Carte.toString();
+    let chiffrecontrole = Number(carteString[carteString.length - 1]);
+    let numerosanscontrole = '';
+    for (let i = 0; i < carteString.length - 1; i++){
+        numerosanscontrole += carteString[i];}
+    let chiffres = numerosanscontrole.split('');
+    chiffres.reverse();
+    let somme = 0;
+    for (let i = 0; i < chiffres.length; i++){
+        let chiffre = Number(chiffres[i]);
+        if (i % 2 === 1){
+            chiffre = chiffre * 2;
+            if (chiffre > 9){
+                chiffre = chiffre - 9;}}
+        somme = somme + chiffre;}
+    let estvalide = (somme + chiffrecontrole) % 10 === 0;
+    if (estvalide){
+        console.log("bon");} 
+    else {
+        console.log("pas bon");}}
+
+
+</script>
+
+<body>
+    <h1>TP 5</h1>
+
+</body>
+</html>
